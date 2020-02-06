@@ -1,0 +1,10 @@
+{{#hascertificates}}
+    {{#coursescertificates}}
+        {{#certificates}}
+            <p><a target="_blank" href="{{ downloadurl }}">{{# pix }} icon, {{{ module }}} {{/ pix }} {{{ name }}}</a></p>
+        {{/certificates}}
+    {{/coursescertificates}}
+{{/hascertificates }}
+{{^hascertificates}}
+    <p class="alert alert-info">{{#str}}nohavecertificates, theme_moove{{/str}}</p>
+{{/hascertificates}}
