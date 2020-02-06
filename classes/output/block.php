@@ -51,6 +51,16 @@ class block implements renderable, templatable {
         $this->courseid = $courseid;
     }
 
+    /**
+     * Export the data
+     *
+     * @param renderer_base $output
+     *
+     * @return array|\stdClass
+     *
+     * @throws \dml_exception
+     * @throws \moodle_exception
+     */
     public function export_for_template(renderer_base $output) {
         global $USER;
 
@@ -58,18 +68,9 @@ class block implements renderable, templatable {
 
         $issuedcertificates = $certificates->get_all_certificates();
 
-//        $title = get_string('certificatestitle', 'theme_moove');
-//        $subtitle = get_string('subtitleallcertificates', 'theme_moove');
-//
-//        if ($this->courseid) {
-//            $subtitle = get_string('subtitlecoursecertificates', 'theme_moove');
-//        }
-
         return [
             'hascertificates' => (count($issuedcertificates)) ? true : false,
-            'coursescertificates' => $issuedcertificates,
-//            'title' => $title,
-//            'subtitle' => $subtitle
+            'coursescertificates' => $issuedcertificates
         ];
     }
 }

@@ -93,7 +93,7 @@ class certificates {
             return [];
         }
 
-        $sql = 'SELECT sci.code, sci.pathnamehash, sc.name, c.id as courseid, c.fullname, c.shortname, "simplecertificate" as module
+            $sql = 'SELECT sci.code, sci.pathnamehash, sc.name, c.id as courseid, c.fullname, c.shortname, "simplecertificate" as module
                 FROM {simplecertificate_issues} sci
                 INNER JOIN {simplecertificate} sc ON sc.id = sci.certificateid
                 INNER JOIN {course} c ON sc.course = c.id
