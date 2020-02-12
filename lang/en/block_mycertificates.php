@@ -25,4 +25,5 @@
 $string['pluginname'] = 'My Certificates';
 $string['mycertificates:addinstance'] = 'Add a new My Certificates block';
 $string['mycertificates:myaddinstance'] = 'Add a new Certificates block to Dashboard';
+$string['nohavecertificates'] = 'You no have certificates yet.';
 $string['privacy:metadata'] = 'The Certificates block only shows data stored in other locations.';
