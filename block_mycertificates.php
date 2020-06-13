@@ -66,7 +66,7 @@ class block_mycertificates extends block_base {
      * @throws dml_exception
      */
     public function get_content() {
-        if ($this->content !== NULL) {
+        if ($this->content !== null) {
             return $this->content;
         }
 
