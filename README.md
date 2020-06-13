@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/willianmano/moodle-block_mycertificates.svg?branch=master)](https://travis-ci.org/willianmano/moodle-block_mycertificates)
+
 # Moodle My Certificates block repository
 
 This plugin displays the user's issued certificates. Currently displaying certificates from [Simple Certificate](https://moodle.org/plugins/mod_simplecertificate) and [Custom Certificate](https://moodle.org/plugins/mod_customcert) modules. 
