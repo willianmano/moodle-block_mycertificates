@@ -66,8 +66,9 @@ class certificates {
     public function get_all_certificates() {
         $simplecertificate = $this->get_from_simplecertificate();
         $customcert = $this->get_from_customcert();
+        $coursecertificate = $this->get_from_coursecertificate();
 
-        $allcerts = array_merge($simplecertificate, $customcert);
+        $allcerts = array_merge($simplecertificate, $customcert, $coursecertificate);
 
         if (!empty($allcerts)) {
             return array_values($this->group_certificates_by_course($allcerts));
@@ -184,14 +185,70 @@ class certificates {
             return [];
         }
 
-        foreach ($certificates as $key => $certificate) {
+        foreach ($certificates as $certificate) {
             $url = new \moodle_url('/mod/customcert/my_certificates.php', [
                 'downloadcert' => true,
                 'userid' => $this->user->id,
                 'certificateid' => $certificate->customcertid
             ]);
 
-            $certificates[$key]->downloadurl = $url->out(false);
+            $certificate->downloadurl = $url->out(false);
+        }
+
+        return $certificates;
+    }
+
+    /**
+     * Get issued certificates from Moodle HQ Certificate plugin.
+     *
+     * @return array
+     *
+     * @throws \dml_exception
+     * @throws \moodle_exception
+     */
+    public function get_from_coursecertificate() {
+        global $DB;
+
+        $certificateplugin = \core_plugin_manager::instance()->get_plugin_info('tool_certificate');
+        $coursecertificateplugin = \core_plugin_manager::instance()->get_plugin_info('coursecertificate');
+
+        if (is_null($certificateplugin)) {
+            return [];
+        }
+
+        $sql = "SELECT
+                  ci.id,
+                  ci.code,
+                  t.name,
+                  IFNULL(ci.courseid, 1) as courseid,
+                  c.fullname,
+                  c.shortname,
+                  'coursecertificate' as module
+                FROM {tool_certificate_issues} ci
+                INNER JOIN {tool_certificate_templates} t ON t.id = ci.templateid
+                INNER JOIN {course} c ON c.id = IFNULL(ci.courseid, 1)
+                WHERE ci.userid = :userid";
+
+        $params = ['userid' => $this->user->id];
+
+        if ($this->courseid) {
+            $sql .= ' AND c.id = :courseid';
+            $params['courseid'] = $this->courseid;
+        }
+
+        $sql .= ' ORDER BY c.fullname, ci.timecreated';
+
+        $certificates = $DB->get_records_sql($sql, $params);
+
+        if (empty($certificates)) {
+            return [];
+        }
+
+        foreach ($certificates as $certificate) {
+            if (!$coursecertificateplugin) {
+                $certificate->module = 'tool_certificate';
+            }
+            $certificate->downloadurl = \tool_certificate\template::view_url($certificate->code)->out(false);
         }
 
         return $certificates;

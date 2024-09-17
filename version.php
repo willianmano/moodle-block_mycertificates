@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->requires  = 2017111309;
-$plugin->version   = 2020061300;
-$plugin->release   = '1.0.1';
+$plugin->version   = 2024091700;
+$plugin->release   = '1.1.0';
 $plugin->maturity  = MATURITY_STABLE;
 $plugin->release   = 'Version for Moodle 3.4 onwards';
 $plugin->component = 'block_mycertificates';
