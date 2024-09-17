@@ -22,8 +22,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Meus Certificados';
 $string['mycertificates:addinstance'] = 'Adicionar um novo bloco meus certificados';
+$string['pluginname'] = 'Meus Certificados';
 $string['mycertificates:myaddinstance'] = 'Adicionar um novo bloco meus certificados na página painel';
 $string['nohavecertificates'] = 'Você não possui certificados ainda.';
 $string['privacy:metadata'] = 'O bloco meus certificados apenas exibe dados salvos em outros locais.';

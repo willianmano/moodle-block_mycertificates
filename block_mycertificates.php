@@ -22,8 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * My Certificates block definition class
  *
@@ -49,12 +47,12 @@ class block_mycertificates extends block_base {
      * @return array
      */
     public function applicable_formats() {
-        return array(
+        return [
             'course-view'    => true,
             'site'           => false,
             'mod'            => false,
-            'my'             => true
-        );
+            'my'             => true,
+        ];
     }
 
     /**

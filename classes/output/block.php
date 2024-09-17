@@ -23,8 +23,6 @@
  */
 namespace block_mycertificates\output;
 
-defined('MOODLE_INTERNAL') || die();
-
 use renderable;
 use templatable;
 use renderer_base;
@@ -70,7 +68,7 @@ class block implements renderable, templatable {
 
         return [
             'hascertificates' => (count($issuedcertificates)) ? true : false,
-            'coursescertificates' => $issuedcertificates
+            'coursescertificates' => $issuedcertificates,
         ];
     }
 }

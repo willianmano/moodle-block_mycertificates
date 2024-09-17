@@ -24,8 +24,6 @@
 
 namespace block_mycertificates\util;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Class to get the user certificates.
  *
@@ -130,7 +128,7 @@ class certificates {
             }
 
             $url = new \moodle_url('/mod/simplecertificate/wmsendfile.php', [
-                'code' => $certificate->code
+                'code' => $certificate->code,
             ]);
 
             $certificate->downloadurl = $url->out(false);
@@ -189,7 +187,7 @@ class certificates {
             $url = new \moodle_url('/mod/customcert/my_certificates.php', [
                 'downloadcert' => true,
                 'userid' => $this->user->id,
-                'certificateid' => $certificate->customcertid
+                'certificateid' => $certificate->customcertid,
             ]);
 
             $certificate->downloadurl = $url->out(false);
@@ -278,7 +276,7 @@ class certificates {
                 'courseid' => $certificate->courseid,
                 'shortname' => $certificate->shortname,
                 'fullname' => $certificate->fullname,
-                'certificates' => $certs
+                'certificates' => $certs,
             ];
         }
 

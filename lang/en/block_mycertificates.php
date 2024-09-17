@@ -22,8 +22,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'My Certificates';
 $string['mycertificates:addinstance'] = 'Add a new my certificates block';
+$string['pluginname'] = 'My Certificates';
 $string['mycertificates:myaddinstance'] = 'Add a new certificates block to dashboard';
 $string['nohavecertificates'] = 'You no have certificates yet.';
 $string['privacy:metadata'] = 'The certificates block only shows data stored in other locations.';
