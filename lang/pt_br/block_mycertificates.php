@@ -23,7 +23,7 @@
  */
 
 $string['mycertificates:addinstance'] = 'Adicionar um novo bloco meus certificados';
-$string['pluginname'] = 'Meus Certificados';
 $string['mycertificates:myaddinstance'] = 'Adicionar um novo bloco meus certificados na página painel';
 $string['nohavecertificates'] = 'Você não possui certificados ainda.';
+$string['pluginname'] = 'Meus Certificados';
 $string['privacy:metadata'] = 'O bloco meus certificados apenas exibe dados salvos em outros locais.';
