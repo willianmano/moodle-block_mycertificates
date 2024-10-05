@@ -260,6 +260,8 @@ class certificates {
      * @return array
      */
     public static function group_certificates_by_course($certificates) {
+        global $PAGE;
+
         $returndata = [];
 
         foreach ($certificates as $certificate) {
@@ -274,8 +276,8 @@ class certificates {
 
             $returndata[$certificate->courseid] = [
                 'courseid' => $certificate->courseid,
-                'shortname' => $certificate->shortname,
-                'fullname' => $certificate->fullname,
+                'shortname' => format_string($certificate->shortname, true, ['context' => $PAGE->context]),
+                'fullname' => format_string($certificate->fullname, true, ['context' => $PAGE->context]),
                 'certificates' => $certs,
             ];
         }
